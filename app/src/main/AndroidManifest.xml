@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.LiveActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>
