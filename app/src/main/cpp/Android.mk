@@ -63,16 +63,27 @@ LOCAL_MODULE    := x264
 LOCAL_SRC_FILES := libx264.a
 include $(PREBUILT_STATIC_LIBRARY)
 
+#prepare libjpeg
+include $(CLEAR_VARS)
+TARGET_ARCH_ABI := armeabi-v7a
+LOCAL_MODULE    := libjpeg
+LOCAL_SRC_FILES := libjpeg.so
+include $(PREBUILT_SHARED_LIBRARY)
+
+
+
 include $(CLEAR_VARS)
 
 TARGET_ARCH_ABI := armeabi-v7a
 
 LOCAL_MODULE     := panda-jni
 LOCAL_SRC_FILES  := panda-jni.c
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/include
+LOCAL_C_INCLUDES += $(LOCAL_PATH)/include \
+                    $(LOCAL_PATH)/libjpeg-turbo \
+                    $(LOCAL_PATH)/libjpeg-turbo/android
 LOCAL_CFLAGS     := -D__STDC_CONSTANT_MACROS -Wno-sign-compare -Wno-switch -Wno-pointer-sign -DHAVE_NEON=1 -mfpu=neon -mfloat-abi=softfp -fPIC -DANDROID
 
-LOCAL_STATIC_LIBRARIES := avfilter avformat avcodec postproc swresample swscale avutil x264
+LOCAL_STATIC_LIBRARIES := avfilter avformat avcodec postproc swresample swscale avutil x264 libjpeg
 LOCAL_LDLIBS     := -L$(NDK_ROOT)/platforms/$(APP_PLATFORM)/arch-arm/usr/lib -L$(LOCAL_PATH) -llog -ljnigraphics -lz -ldl
 
 

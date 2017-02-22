@@ -22,6 +22,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="观看直播"/>
+        <Button
+            android:id="@+id/libjpeg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="libJpeg"/>
     </LinearLayout>
     <TextView
         android:id="@+id/test"
